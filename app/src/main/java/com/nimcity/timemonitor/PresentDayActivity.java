@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class PresentDayActivity extends AppCompatActivity {
 
@@ -27,18 +29,23 @@ public class PresentDayActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        // Set up the recycler view
-        recyclerView = findViewById(R.id.present_day_screen_recycler_view);
-        recyclerView.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
+        // Load in some data
         dataset = new String[3];
         dataset[0] = "Item 1";
         dataset[1] = "Item 2";
         dataset[2] = "Item 3";
+
+        // Set up the recycler view
+        recyclerView = findViewById(R.id.present_day_screen_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         adapter = new RecyclerViewAdapter(dataset);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void pressFloatingActionButton(View view) {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
     }
 }
