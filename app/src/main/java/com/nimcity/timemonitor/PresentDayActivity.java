@@ -16,7 +16,7 @@ public class PresentDayActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private String[] dataset;
+    private Item[] itemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +30,17 @@ public class PresentDayActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Load in some data
-        dataset = new String[3];
-        dataset[0] = "Item 1";
-        dataset[1] = "Item 2";
-        dataset[2] = "Item 3";
+        itemsList = new Item[3];
+        itemsList[0] = new Item("Item 1");
+        itemsList[1] = new Item("Item 2");
+        itemsList[2] = new Item("Item 3");
 
         // Set up the recycler view
         recyclerView = findViewById(R.id.present_day_screen_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecyclerViewAdapter(dataset);
+        adapter = new RecyclerViewAdapter(itemsList);
         recyclerView.setAdapter(adapter);
     }
 
